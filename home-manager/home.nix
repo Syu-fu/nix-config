@@ -8,6 +8,7 @@
   programs.home-manager.enable = true;
 
   imports = [
+    ./bat.nix
     ./fzf.nix
     ./git.nix
     ./lazygit.nix
