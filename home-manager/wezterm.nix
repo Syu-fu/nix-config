@@ -47,6 +47,15 @@
         { key = "l", mods = "CMD", action = wezterm.action.SendKey { key = "l", mods = "META" } },
         { key = "\\", mods = "CMD", action = wezterm.action.SendKey { key = "\\", mods = "META" } },
         { key = "-", mods = "CMD", action = wezterm.action.SendKey { key = "-", mods = "META" } },
+        { key = "1", mods = "CMD", action = wezterm.action.SendKey { key = "1", mods = "META" } },
+        { key = "2", mods = "CMD", action = wezterm.action.SendKey { key = "2", mods = "META" } },
+        { key = "3", mods = "CMD", action = wezterm.action.SendKey { key = "3", mods = "META" } },
+        { key = "4", mods = "CMD", action = wezterm.action.SendKey { key = "4", mods = "META" } },
+        { key = "5", mods = "CMD", action = wezterm.action.SendKey { key = "5", mods = "META" } },
+        { key = "6", mods = "CMD", action = wezterm.action.SendKey { key = "6", mods = "META" } },
+        { key = "7", mods = "CMD", action = wezterm.action.SendKey { key = "7", mods = "META" } },
+        { key = "8", mods = "CMD", action = wezterm.action.SendKey { key = "8", mods = "META" } },
+        { key = "9", mods = "CMD", action = wezterm.action.SendKey { key = "9", mods = "META" } },
       }
 
       return config
