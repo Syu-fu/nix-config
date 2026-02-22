@@ -26,6 +26,10 @@
       bind R command-prompt "rename-session %%"
       bind C-w choose-window
       bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
+      bind '\' split-window -hc "#{pane_current_path}"
+      bind -n 'M-\' split-window -hc "#{pane_current_path}"
+      bind - split-window -vc "#{pane_current_path}"
+      bind -n M-- split-window -vc "#{pane_current_path}"
       set-option -g renumber-windows on
       set-option -g status on
       set-option -g status-interval 2
