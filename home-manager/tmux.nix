@@ -3,6 +3,7 @@
   programs.tmux = {
     enable = true;
     prefix = "C-s";
+    terminal = "tmux-256color";
     plugins = with pkgs.tmuxPlugins; [
       tmux-fzf
       resurrect
