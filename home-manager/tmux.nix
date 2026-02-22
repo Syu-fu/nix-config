@@ -61,6 +61,9 @@ in
       bind -r K resize-pane -U 5
       bind -r L resize-pane -R 5
       bind -n C-] new-window "~/.config/tmux/scripts/ghq-tmux-switch.sh"
+      bind [ copy-mode \; display "copy mode"
+      bind ] paste-buffer
+      bind P paste-buffer
       set-option -g renumber-windows on
       set-option -g status on
       set-option -g status-interval 2
