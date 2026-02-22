@@ -8,6 +8,7 @@
     extraConfig = ''
       set-option -g default-shell $SHELL
       set-option -g default-command $SHELL
+      set-option -g renumber-windows on
     '';
     plugins = with pkgs.tmuxPlugins; [
       tmux-fzf
