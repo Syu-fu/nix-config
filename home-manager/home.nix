@@ -10,6 +10,7 @@
   imports = [
     ./git.nix
     ./lazygit.nix
+    ./ripgrep.nix
     ./wezterm.nix
   ];
 }
