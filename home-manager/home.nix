@@ -14,6 +14,7 @@
     ./git.nix
     ./lazygit.nix
     ./ripgrep.nix
+    ./tmux.nix
     ./wezterm.nix
   ];
 }
