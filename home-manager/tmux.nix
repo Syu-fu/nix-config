@@ -8,6 +8,7 @@
     historyLimit = 5000;
     keyMode = "vi";
     escapeTime = 20;
+    mouse = true;
     extraConfig = ''
       set-option -g default-shell $SHELL
       set-option -g default-command ""
