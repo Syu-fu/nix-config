@@ -20,6 +20,7 @@
       set-option -g set-titles on
       set-option -g set-titles-string '#T'
       set-window-option -g automatic-rename on
+      set-option -g word-separators " -_()@,[]{}:=/"
       set-option -g renumber-windows on
       set-option -g status on
       set-option -g status-interval 2
