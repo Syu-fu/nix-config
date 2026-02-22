@@ -60,6 +60,7 @@ in
       bind -r J resize-pane -D 5
       bind -r K resize-pane -U 5
       bind -r L resize-pane -R 5
+      bind -n C-] new-window "~/.config/tmux/scripts/ghq-tmux-switch.sh"
       set-option -g renumber-windows on
       set-option -g status on
       set-option -g status-interval 2
@@ -72,22 +73,89 @@ in
       set -sa terminal-overrides ',xterm-256color:RGB'
       set -sa terminal-overrides ',*:Smulx=\E[4::%p1%dm'
     '';
-    plugins = with pkgs.tmuxPlugins; [
-      tmux-fzf
-      resurrect
-      {
-        plugin = continuum;
-        extraConfig = ''
-          set -g @continuum-boot 'on'
-          set -g @continuum-restore 'on'
-        '';
-      }
-      {
-        plugin = gruvbox;
-        extraConfig = ''
-          set -g @tmux-gruvbox 'dark'
-        '';
-      }
-    ];
   };
+
+  xdg.configFile."tmux/scripts/ghq-tmux-switch.sh" = {
+    executable = true;
+    text = ''
+      #!/bin/bash
+
+      # Set color variables
+      green=$(tput setaf 2)
+      blue=$(tput setaf 4)
+      reset=$(tput sgr0)
+
+      # Set checkmark variables
+      checked="󰄲"
+      unchecked="󰄱"
+
+      window_exists() {
+        tmux list-windows -t "$1" >/dev/null 2>&1
+      }
+
+      # Generate window list
+      generate_window_list() {
+        ghq list | sort | while read -r repo; do
+          window="''${repo//[:. ]/-}"
+          color="$blue"
+          icon="$unchecked"
+          if window_exists "$window"; then
+            color="$green"
+            icon="$checked"
+          fi
+          printf "$color$icon %s$reset\n" "$repo"
+        done
+      }
+
+      # Define preview command
+      preview_cmd="echo {} | cut -d' ' -f2- | xargs -I% sh -c 'bat --color=always --style=plain \$(find \"\$(ghq root)/%\" -maxdepth 1 | grep -i -E \"README(\\..*)?\")'"
+
+      # Select window
+      selected="$(generate_window_list | fzf-tmux -p 80% --ansi --exit-0 --preview="$preview_cmd" --preview-window="right:60%" | cut -d' ' -f2-)"
+
+      # If not inside a tmux session, attach or create
+      session_name="''${selected//[:. ]/-}"
+      repo_dir="$(ghq list --exact --full-path "$selected")"
+
+      if [ -z "$TMUX" ]; then
+        if tmux has-session -t "$session_name" 2>/dev/null; then
+          BUFFER="tmux attach-session -t ''${session_name}"
+        else
+          tmux new-session -d -s "''${session_name}" -c "''${repo_dir}"
+          BUFFER="tmux attach-session -t ''${session_name}"
+        fi
+      else
+        if [ "$(tmux display-message -p "#S")" != "$session_name" ]; then
+          if tmux has-session -t "$session_name" 2>/dev/null; then
+            tmux switch-client -t "$session_name"
+          else
+            tmux new-session -d -s "''${session_name}" -c "''${repo_dir}"
+            tmux switch-client -t "$session_name"
+          fi
+        elif [ "$PWD" != "$repo_dir" ]; then
+          BUFFER="cd ''${repo_dir}"
+        fi
+      fi
+
+      eval "$BUFFER"
+    '';
+  };
+
+  programs.tmux.plugins = with pkgs.tmuxPlugins; [
+    tmux-fzf
+    resurrect
+    {
+      plugin = continuum;
+      extraConfig = ''
+        set -g @continuum-boot 'on'
+        set -g @continuum-restore 'on'
+      '';
+    }
+    {
+      plugin = gruvbox;
+      extraConfig = ''
+        set -g @tmux-gruvbox 'dark'
+      '';
+    }
+  ];
 }
