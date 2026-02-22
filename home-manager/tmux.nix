@@ -9,6 +9,8 @@
       set-option -g default-shell $SHELL
       set-option -g default-command $SHELL
       set-option -g renumber-windows on
+      set-option -g status on
+      set-option -g status-interval 2
     '';
     plugins = with pkgs.tmuxPlugins; [
       tmux-fzf
