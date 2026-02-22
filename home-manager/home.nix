@@ -9,6 +9,7 @@
 
   imports = [
     ./git.nix
+    ./lazygit.nix
     ./wezterm.nix
   ];
 }
