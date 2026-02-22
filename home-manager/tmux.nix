@@ -70,6 +70,10 @@ in
       bind -Tcopy-mode-vi y send -X copy-selection
       bind -Tcopy-mode-vi Y send -X copy-line
       bind -Tcopy-mode-vi Escape send -X cancel
+      if 'builtin command -v xsel > /dev/null 2>&1' \
+        "run-shell 'tmux bind -Tcopy-mode-vi Enter send -X copy-pipe-and-cancel \"xsel -i --clipboard\"'"
+      if '$WAYLAND_DISPLAY != "" && builtin command -v wl-copy > /dev/null 2>&1' \
+        "run-shell 'tmux bind -Tcopy-mode-vi Enter send -X copy-pipe-and-cancel \"wl-copy\"'"
       set-option -g renumber-windows on
       set-option -g status on
       set-option -g status-interval 2
