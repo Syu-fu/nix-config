@@ -21,6 +21,10 @@
       set-option -g set-titles-string '#T'
       set-window-option -g automatic-rename on
       set-option -g word-separators " -_()@,[]{}:=/"
+      bind d detach
+      bind A command-prompt "rename-window %%"
+      bind R command-prompt "rename-session %%"
+      bind C-w choose-window
       set-option -g renumber-windows on
       set-option -g status on
       set-option -g status-interval 2
