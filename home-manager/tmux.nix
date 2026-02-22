@@ -56,6 +56,10 @@ in
       bind-key -n ${mod}-7 select-window -t :=7
       bind-key -n ${mod}-8 select-window -t :=8
       bind-key -n ${mod}-9 select-window -t :=9
+      bind -r H resize-pane -L 5
+      bind -r J resize-pane -D 5
+      bind -r K resize-pane -U 5
+      bind -r L resize-pane -R 5
       set-option -g renumber-windows on
       set-option -g status on
       set-option -g status-interval 2
