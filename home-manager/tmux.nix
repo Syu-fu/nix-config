@@ -7,6 +7,7 @@
     baseIndex = 1;
     historyLimit = 5000;
     keyMode = "vi";
+    escapeTime = 20;
     extraConfig = ''
       set-option -g default-shell $SHELL
       set-option -g default-command ""
