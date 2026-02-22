@@ -15,6 +15,7 @@
       set-option -g set-clipboard on
       set-option -g bell-action other
       set-option -g visual-bell off
+      set-option -g status-keys emacs
       set-option -g renumber-windows on
       set-option -g status on
       set-option -g status-interval 2
