@@ -74,6 +74,10 @@ in
         "run-shell 'tmux bind -Tcopy-mode-vi Enter send -X copy-pipe-and-cancel \"xsel -i --clipboard\"'"
       if '$WAYLAND_DISPLAY != "" && builtin command -v wl-copy > /dev/null 2>&1' \
         "run-shell 'tmux bind -Tcopy-mode-vi Enter send -X copy-pipe-and-cancel \"wl-copy\"'"
+      bind C-x confirm-before 'kill-pane'
+      bind C-X confirm-before 'kill-window'
+      bind q confirm-before 'kill-session'
+      bind C-q confirm-before 'kill-server'
       set-option -g renumber-windows on
       set-option -g status on
       set-option -g status-interval 2
