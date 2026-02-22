@@ -10,6 +10,7 @@
   imports = [
     ./bat.nix
     ./fzf.nix
+    ./gh.nix
     ./git.nix
     ./lazygit.nix
     ./ripgrep.nix
