@@ -8,6 +8,7 @@
   programs.home-manager.enable = true;
 
   imports = [
+    ./fzf.nix
     ./git.nix
     ./lazygit.nix
     ./ripgrep.nix
