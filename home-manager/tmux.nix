@@ -6,9 +6,10 @@
     terminal = "tmux-256color";
     baseIndex = 1;
     historyLimit = 5000;
+    keyMode = "vi";
     extraConfig = ''
       set-option -g default-shell $SHELL
-      set-option -g default-command $SHELL
+      set-option -g default-command ""
       set-option -g renumber-windows on
       set-option -g status on
       set-option -g status-interval 2
