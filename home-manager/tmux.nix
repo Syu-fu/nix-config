@@ -25,6 +25,7 @@
       bind A command-prompt "rename-window %%"
       bind R command-prompt "rename-session %%"
       bind C-w choose-window
+      bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
       set-option -g renumber-windows on
       set-option -g status on
       set-option -g status-interval 2
