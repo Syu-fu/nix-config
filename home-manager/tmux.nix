@@ -13,6 +13,13 @@
       set-option -g status on
       set-option -g status-interval 2
       set-option -g display-time 1000
+      set-option -ga terminal-overrides ",xterm*:Tc"
+      set-option -ga terminal-overrides ",xterm*:smcup@:rmcup@"
+      set-option -ga terminal-overrides ',rxvt-uni*:XT:Ms=\E]52;%p1%s;%p2%s\007'
+      set-option -ga terminal-overrides ',*:U8=0'
+      set-option -ga terminal-overrides ',*:Ss=\E[%p1%d q:Se=\E[2 q'
+      set -sa terminal-overrides ',xterm-256color:RGB'
+      set -sa terminal-overrides ',*:Smulx=\E[4::%p1%dm'
     '';
     plugins = with pkgs.tmuxPlugins; [
       tmux-fzf
