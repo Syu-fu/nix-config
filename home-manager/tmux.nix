@@ -11,6 +11,8 @@
       set-option -g default-shell $SHELL
       set-option -g default-command ""
       set-option -g set-clipboard on
+      set-option -g bell-action other
+      set-option -g visual-bell off
       set-option -g renumber-windows on
       set-option -g status on
       set-option -g status-interval 2
