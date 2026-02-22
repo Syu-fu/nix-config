@@ -35,6 +35,20 @@
       config.use_ime = true
       config.macos_forward_to_ime_modifier_mask = "SHIFT|CTRL"
 
+      -- macOS: remap Cmd key to Meta for tmux bindings
+      config.keys = {
+        { key = "H", mods = "CMD", action = wezterm.action.SendKey { key = "H", mods = "META" } },
+        { key = "J", mods = "CMD", action = wezterm.action.SendKey { key = "J", mods = "META" } },
+        { key = "K", mods = "CMD", action = wezterm.action.SendKey { key = "K", mods = "META" } },
+        { key = "L", mods = "CMD", action = wezterm.action.SendKey { key = "L", mods = "META" } },
+        { key = "h", mods = "CMD", action = wezterm.action.SendKey { key = "h", mods = "META" } },
+        { key = "j", mods = "CMD", action = wezterm.action.SendKey { key = "j", mods = "META" } },
+        { key = "k", mods = "CMD", action = wezterm.action.SendKey { key = "k", mods = "META" } },
+        { key = "l", mods = "CMD", action = wezterm.action.SendKey { key = "l", mods = "META" } },
+        { key = "\\", mods = "CMD", action = wezterm.action.SendKey { key = "\\", mods = "META" } },
+        { key = "-", mods = "CMD", action = wezterm.action.SendKey { key = "-", mods = "META" } },
+      }
+
       return config
     '';
   };

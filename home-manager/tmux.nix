@@ -1,4 +1,9 @@
 { pkgs, ... }:
+let
+  # On macOS, M- is triggered by Cmd key via WezTerm key remapping.
+  # On NixOS, M- is triggered by Alt key.
+  mod = if pkgs.stdenv.isDarwin then "M" else "M";
+in
 {
   programs.tmux = {
     enable = true;
@@ -34,6 +39,14 @@
       bind j select-pane -D
       bind k select-pane -U
       bind l select-pane -R
+      bind -n ${mod}-H select-pane -L
+      bind -n ${mod}-J select-pane -D
+      bind -n ${mod}-K select-pane -U
+      bind -n ${mod}-L select-pane -R
+      bind -n ${mod}-h previous-window
+      bind -n ${mod}-l next-window
+      bind -n ${mod}-k new-window -c "#{pane_current_path}"
+      bind -n ${mod}-j confirm-before 'kill-window'
       set-option -g renumber-windows on
       set-option -g status on
       set-option -g status-interval 2
