@@ -30,6 +30,10 @@
       bind -n 'M-\' split-window -hc "#{pane_current_path}"
       bind - split-window -vc "#{pane_current_path}"
       bind -n M-- split-window -vc "#{pane_current_path}"
+      bind h select-pane -L
+      bind j select-pane -D
+      bind k select-pane -U
+      bind l select-pane -R
       set-option -g renumber-windows on
       set-option -g status on
       set-option -g status-interval 2
