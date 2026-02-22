@@ -64,6 +64,12 @@ in
       bind [ copy-mode \; display "copy mode"
       bind ] paste-buffer
       bind P paste-buffer
+      bind -Tcopy-mode-vi v send -X begin-selection
+      bind -Tcopy-mode-vi V send -X select-line
+      bind -Tcopy-mode-vi C-v send -X rectangle-toggle
+      bind -Tcopy-mode-vi y send -X copy-selection
+      bind -Tcopy-mode-vi Y send -X copy-line
+      bind -Tcopy-mode-vi Escape send -X cancel
       set-option -g renumber-windows on
       set-option -g status on
       set-option -g status-interval 2
