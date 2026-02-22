@@ -4,6 +4,10 @@
     enable = true;
     prefix = "C-s";
     terminal = "tmux-256color";
+    extraConfig = ''
+      set-option -g default-shell $SHELL
+      set-option -g default-command $SHELL
+    '';
     plugins = with pkgs.tmuxPlugins; [
       tmux-fzf
       resurrect
