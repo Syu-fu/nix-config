@@ -77,5 +77,7 @@ in
     abbr copypath='pwd | tr -d "\n" | pbcopy'
     abbr "npm i"="npm install"
     abbr "pnpm i"="pnpm install"
+    abbr "npm install -D"="npm install --save-dev"
+    abbr "pnpm install -D"="pnpm install --save-dev"
   '';
 }
