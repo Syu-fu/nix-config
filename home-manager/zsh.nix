@@ -69,12 +69,7 @@ in
       setopt HIST_NO_STORE
 
       # Don't save failed commands to history
-      autoload -Uz add-zsh-hook
-      _remove_failed_history() {
-        local exit_status=$?
-        (( exit_status == 0 )) || fc -d -1 2>/dev/null
-      }
-      add-zsh-hook precmd _remove_failed_history
+      zshaddhistory() { [[ $? -eq 0 ]] }
 
       # Load p10k theme config
       [[ -f ~/.config/zsh/p10k.zsh ]] && source ~/.config/zsh/p10k.zsh
