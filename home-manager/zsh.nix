@@ -1,9 +1,17 @@
+{ pkgs, ... }:
 {
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
     defaultKeymap = "emacs";
     enableCompletion = true;
+    plugins = [
+      {
+        name = "zsh-defer";
+        src = pkgs.zsh-defer;
+        file = "share/zsh-defer/zsh-defer.plugin.zsh";
+      }
+    ];
     sessionVariables = {
       LANG = "ja_JP.UTF-8";
       XDG_CONFIG_HOME = "$HOME/.config";
