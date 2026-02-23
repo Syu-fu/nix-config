@@ -13,5 +13,28 @@
       PAGER = "less";
       GHQ_ROOT = "$HOME/repos";
     };
+    history = {
+      ignoreAllDups = true;
+      share = true;
+      size = 1000;
+      save = 10000000;
+      path = "$HOME/.config/zsh/.zsh_history";
+      ignorePatterns = [
+        "cd"
+        "pwd"
+        "l[sal]"
+        "nvim"
+        "vim"
+        "less"
+        "which"
+        "whois"
+        "lazygit"
+        "xdg-open"
+      ];
+    };
+    initContent = ''
+      setopt HIST_REDUCE_BLANKS
+      setopt HIST_NO_STORE
+    '';
   };
 }
