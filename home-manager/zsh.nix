@@ -92,6 +92,9 @@ in
         [[ -n "$selected" ]] && cd "$selected"
       }
 
+      # Run ls after cd
+      function chpwd() { ls }
+
       # Auto-start tmux
       if [ -z "$TMUX" ]; then
         tmux new-session -A -s main
