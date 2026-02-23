@@ -27,6 +27,11 @@ in
       (mkDeferredPlugin "zsh-autosuggestions" pkgs.zsh-autosuggestions "share/zsh-autosuggestions/zsh-autosuggestions.zsh")
       (mkDeferredPlugin "fast-syntax-highlighting" pkgs.zsh-fast-syntax-highlighting "share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh")
       (mkDeferredPlugin "zsh-abbr" pkgs.zsh-abbr "share/zsh/zsh-abbr/zsh-abbr.zsh")
+      {
+        name = "powerlevel10k";
+        src = pkgs.zsh-powerlevel10k;
+        file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      }
     ];
     sessionVariables = {
       LANG = "ja_JP.UTF-8";
@@ -62,12 +67,17 @@ in
       setopt HIST_REDUCE_BLANKS
       setopt HIST_NO_STORE
 
+      # Load p10k theme config
+      [[ -f ~/.config/zsh/p10k.zsh ]] && source ~/.config/zsh/p10k.zsh
+
       # Auto-start tmux
       if [ -z "$TMUX" ]; then
         tmux new-session -A -s main
       fi
     '';
   };
+
+  xdg.configFile."zsh/p10k.zsh".source = ./p10k.zsh;
 
   xdg.dataFile."zsh/abbreviations".text = ''
     abbr nv=nvim
