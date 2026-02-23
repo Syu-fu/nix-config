@@ -1,4 +1,14 @@
 { pkgs, ... }:
+let
+  mkDeferredPlugin = name: pkg: file: {
+    inherit name;
+    src = pkgs.runCommand "deferred-${name}" { } ''
+      mkdir -p $out
+      echo "zsh-defer source ${pkg}/${file}" > $out/${name}.plugin.zsh
+    '';
+    file = "${name}.plugin.zsh";
+  };
+in
 {
   programs.zsh = {
     enable = true;
@@ -11,6 +21,7 @@
         src = pkgs.zsh-defer;
         file = "share/zsh-defer/zsh-defer.plugin.zsh";
       }
+      (mkDeferredPlugin "zsh-autosuggestions" pkgs.zsh-autosuggestions "share/zsh-autosuggestions/zsh-autosuggestions.zsh")
     ];
     sessionVariables = {
       LANG = "ja_JP.UTF-8";
@@ -45,9 +56,6 @@
     initContent = ''
       setopt HIST_REDUCE_BLANKS
       setopt HIST_NO_STORE
-
-      # Deferred plugins
-      zsh-defer source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
       # Auto-start tmux
       if [ -z "$TMUX" ]; then
