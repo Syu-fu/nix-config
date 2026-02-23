@@ -46,6 +46,9 @@
       setopt HIST_REDUCE_BLANKS
       setopt HIST_NO_STORE
 
+      # Deferred plugins
+      zsh-defer source ${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
       # Auto-start tmux
       if [ -z "$TMUX" ]; then
         tmux new-session -A -s main
