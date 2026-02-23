@@ -17,6 +17,7 @@
 
   imports = [
     ./bat.nix
+    ./browser.nix
     ./fzf.nix
     ./gh.nix
     ./git.nix
