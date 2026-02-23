@@ -18,6 +18,7 @@
     ./gh.nix
     ./git.nix
     ./lazygit.nix
+    ./lsd.nix
     ./ripgrep.nix
     ./tmux.nix
     ./wezterm.nix
