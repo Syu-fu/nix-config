@@ -68,6 +68,9 @@ in
       setopt HIST_REDUCE_BLANKS
       setopt HIST_NO_STORE
 
+      # Don't save failed commands to history
+      zshaddhistory() { whence ''${''${(z)1}[1]} >| /dev/null || return 1 }
+
       # Load p10k theme config
       [[ -f ~/.config/zsh/p10k.zsh ]] && source ~/.config/zsh/p10k.zsh
 
