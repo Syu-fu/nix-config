@@ -20,12 +20,17 @@ let
     url = "https://addons.mozilla.org/firefox/downloads/file/4682211/deepl_translate-1.72.0.xpi";
     hash = "sha256-0lhx4ynvx51ysv83wg38xl30d8hhwqcn2g8m23kfyyi7x9s944mz=";
   };
+  obsidianWebClipper = pkgs.fetchFirefoxAddon {
+    name = "obsidian-web-clipper";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4585733/web_clipper_obsidian-0.12.0.xpi";
+    hash = "sha256-1dxmxahh5lgmypkznbf4n28lrgd1173y0yg1sa4q8jwsc34wic4x=";
+  };
 in
 {
   programs.firefox = {
     enable = true;
     profiles.default = {
-      extensions.packages = [ vimium toggl onepassword deepl ];
+      extensions.packages = [ vimium toggl onepassword deepl obsidianWebClipper ];
     };
   };
 
