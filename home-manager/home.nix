@@ -1,8 +1,13 @@
+{ pkgs, ... }:
 {
   home = {
     username = "syu-fu";
     homeDirectory = "/Users/syu-fu";
     stateVersion = "24.05";
+
+    packages = with pkgs; [
+      trashy
+    ];
   };
 
   programs.home-manager.enable = true;

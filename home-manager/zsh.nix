@@ -72,5 +72,6 @@ in
   xdg.dataFile."zsh/abbreviations".text = ''
     abbr nv=nvim
     abbr e=nvim
+    abbr rm=trash
   '';
 }
