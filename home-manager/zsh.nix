@@ -25,6 +25,7 @@ in
         file = "share/zsh-defer/zsh-defer.plugin.zsh";
       }
       (mkDeferredPlugin "zsh-autosuggestions" pkgs.zsh-autosuggestions "share/zsh-autosuggestions/zsh-autosuggestions.zsh")
+      (mkDeferredPlugin "fzf-tab" pkgs.zsh-fzf-tab "share/fzf-tab/fzf-tab.plugin.zsh")
       (mkDeferredPlugin "fast-syntax-highlighting" pkgs.zsh-fast-syntax-highlighting "share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh")
       (mkDeferredPlugin "zsh-abbr" pkgs.zsh-abbr "share/zsh/zsh-abbr/zsh-abbr.zsh")
       {
