@@ -68,4 +68,9 @@ in
       fi
     '';
   };
+
+  xdg.dataFile."zsh/abbreviations".text = ''
+    abbr nv=nvim
+    abbr e=nvim
+  '';
 }
