@@ -73,5 +73,6 @@ in
     abbr nv=nvim
     abbr e=nvim
     abbr rm=trash
+    abbr lg=lazygit
   '';
 }
