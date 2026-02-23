@@ -15,6 +15,9 @@ in
     dotDir = ".config/zsh";
     defaultKeymap = "emacs";
     enableCompletion = true;
+    initExtraBeforeCompInit = ''
+      fpath+=(${pkgs.zsh-completions}/share/zsh/site-functions)
+    '';
     plugins = [
       {
         name = "zsh-defer";
