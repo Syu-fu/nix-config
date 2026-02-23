@@ -75,9 +75,9 @@ in
     abbr rm=trash
     abbr lg=lazygit
     abbr copypath='pwd | tr -d "\n" | pbcopy'
-    abbr "npm i"="npm install"
-    abbr "pnpm i"="pnpm install"
-    abbr "npm install -D"="npm install --save-dev"
-    abbr "pnpm install -D"="pnpm install --save-dev"
+    abbr -g "npm i"="npm install"
+    abbr -g "pnpm i"="pnpm install"
+    abbr -g "npm install -D"="npm install --save-dev"
+    abbr -g "pnpm install -D"="pnpm install --save-dev"
   '';
 }
