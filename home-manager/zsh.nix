@@ -2,6 +2,7 @@
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
+    defaultKeymap = "emacs";
     sessionVariables = {
       LANG = "ja_JP.UTF-8";
       XDG_CONFIG_HOME = "$HOME/.config";
