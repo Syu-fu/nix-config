@@ -36,6 +36,11 @@
     initContent = ''
       setopt HIST_REDUCE_BLANKS
       setopt HIST_NO_STORE
+
+      # Auto-start tmux
+      if [ -z "$TMUX" ]; then
+        tmux new-session -A -s main
+      fi
     '';
   };
 }
