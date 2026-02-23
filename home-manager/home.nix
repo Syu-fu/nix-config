@@ -7,6 +7,9 @@
 
     packages = with pkgs; [
       trashy
+    ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
+      gnugrep
+      gnused
     ];
   };
 
