@@ -79,6 +79,19 @@ in
       zle -N select-history
       bindkey '^r' select-history
 
+      # cd to a parent directory using fzf
+      function bd() {
+        local dirs=()
+        local current="$PWD"
+        while [[ "$current" != "/" ]]; do
+          current="$(dirname "$current")"
+          dirs+=("$current")
+        done
+        local selected
+        selected=$(printf '%s\n' "''${dirs[@]}" | fzf --prompt="cd > ")
+        [[ -n "$selected" ]] && cd "$selected"
+      }
+
       # Auto-start tmux
       if [ -z "$TMUX" ]; then
         tmux new-session -A -s main
