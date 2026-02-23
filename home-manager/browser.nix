@@ -15,12 +15,17 @@ let
     url = "https://addons.mozilla.org/firefox/downloads/file/4692796/1password_x_password_manager-8.12.2.38.xpi";
     hash = "sha256-1ph43d7az1wgcbzzs9fzvkyzc275hgj0m6c8r3sbsfm2g8612b95=";
   };
+  deepl = pkgs.fetchFirefoxAddon {
+    name = "deepl";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4682211/deepl_translate-1.72.0.xpi";
+    hash = "sha256-0lhx4ynvx51ysv83wg38xl30d8hhwqcn2g8m23kfyyi7x9s944mz=";
+  };
 in
 {
   programs.firefox = {
     enable = true;
     profiles.default = {
-      extensions.packages = [ vimium toggl onepassword ];
+      extensions.packages = [ vimium toggl onepassword deepl ];
     };
   };
 
