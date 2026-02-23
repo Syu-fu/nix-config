@@ -3,6 +3,7 @@
     enable = true;
     dotDir = ".config/zsh";
     defaultKeymap = "emacs";
+    enableCompletion = true;
     sessionVariables = {
       LANG = "ja_JP.UTF-8";
       XDG_CONFIG_HOME = "$HOME/.config";
