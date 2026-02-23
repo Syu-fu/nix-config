@@ -71,6 +71,14 @@ in
       # Load p10k theme config
       [[ -f ~/.config/zsh/p10k.zsh ]] && source ~/.config/zsh/p10k.zsh
 
+      # Interactive history search with fzf
+      function select-history() {
+        BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+        CURSOR=$#BUFFER
+      }
+      zle -N select-history
+      bindkey '^r' select-history
+
       # Auto-start tmux
       if [ -z "$TMUX" ]; then
         tmux new-session -A -s main
