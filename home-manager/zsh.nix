@@ -74,5 +74,6 @@ in
     abbr e=nvim
     abbr rm=trash
     abbr lg=lazygit
+    abbr copypath='pwd | tr -d "\n" | pbcopy'
   '';
 }
