@@ -21,9 +21,11 @@
     ./fzf.nix
     ./gh.nix
     ./git.nix
+    ./hyprland.nix
     ./lazygit.nix
     ./lsd.nix
     ./ripgrep.nix
+    ./rofi.nix
     ./tmux.nix
     ./wezterm.nix
     ./zsh.nix
