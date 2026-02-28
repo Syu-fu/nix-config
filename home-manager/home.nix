@@ -2,7 +2,7 @@
 {
   home = {
     username = "syu-fu";
-    homeDirectory = "/Users/syu-fu";
+    homeDirectory = if pkgs.stdenv.isDarwin then "/Users/syu-fu" else "/home/syu-fu";
     stateVersion = "24.05";
 
     packages = with pkgs; [

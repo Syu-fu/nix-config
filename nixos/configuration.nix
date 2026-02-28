@@ -1,0 +1,102 @@
+{ pkgs, ... }:
+{
+  imports = [
+    ./hardware-configuration.nix
+  ];
+
+  # Bootloader
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
+
+  # Hostname
+  networking = {
+    hostName = "Syu-fu";
+    networkmanager.enable = true;
+  };
+
+  # Timezone and locale
+  time.timeZone = "Asia/Tokyo";
+  i18n = {
+    defaultLocale = "ja_JP.UTF-8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "ja_JP.UTF-8";
+      LC_IDENTIFICATION = "ja_JP.UTF-8";
+      LC_MEASUREMENT = "ja_JP.UTF-8";
+      LC_MONETARY = "ja_JP.UTF-8";
+      LC_NAME = "ja_JP.UTF-8";
+      LC_NUMERIC = "ja_JP.UTF-8";
+      LC_PAPER = "ja_JP.UTF-8";
+      LC_TELEPHONE = "ja_JP.UTF-8";
+      LC_TIME = "ja_JP.UTF-8";
+    };
+  };
+
+  # Intel graphics
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      intel-vaapi-driver
+      libva-vdpau-driver
+      libvdpau-va-gl
+    ];
+  };
+
+  # Wayland / Hyprland
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
+  # XDG portal
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  };
+
+  # Sound
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
+  # User
+  users.users.syu-fu = {
+    isNormalUser = true;
+    description = "Syu-fu";
+    extraGroups = [ "networkmanager" "wheel" "video" "audio" ];
+    shell = pkgs.zsh;
+  };
+
+  # Shells
+  programs.zsh.enable = true;
+
+  # System packages
+  environment.systemPackages = with pkgs; [
+    git
+    curl
+    wget
+    vim
+  ];
+
+  # Nix settings
+  nix = {
+    settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      auto-optimise-store = true;
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
+  };
+
+  nixpkgs.config.allowUnfree = true;
+
+  system.stateVersion = "25.05";
+}

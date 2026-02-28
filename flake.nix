@@ -15,31 +15,48 @@
 
   outputs = { self, nixpkgs, home-manager, pre-commit-hooks, ... }:
     let
-      system = "aarch64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system};
+      darwinSystem = "aarch64-darwin";
+      nixosSystem = "x86_64-linux";
+      darwinPkgs = nixpkgs.legacyPackages.${darwinSystem};
     in
     {
       # macOS home-manager configuration
       homeConfigurations = {
         darwinConfigurations = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+          pkgs = darwinPkgs;
           modules = [
             ./home-manager/home.nix
           ];
         };
       };
 
+      # NixOS configuration
+      nixosConfigurations.Syu-fu = nixpkgs.lib.nixosSystem {
+        system = nixosSystem;
+        modules = [
+          ./nixos/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.syu-fu = import ./home-manager/home.nix;
+            };
+          }
+        ];
+      };
+
       # Formatter
-      formatter.${system} = pkgs.nixpkgs-fmt;
+      formatter.${darwinSystem} = darwinPkgs.nixpkgs-fmt;
 
       # Development shell with pre-commit hooks
-      devShells.${system}.default = pkgs.mkShell {
-        inherit (self.checks.${system}.pre-commit-check) shellHook;
-        buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+      devShells.${darwinSystem}.default = darwinPkgs.mkShell {
+        inherit (self.checks.${darwinSystem}.pre-commit-check) shellHook;
+        buildInputs = self.checks.${darwinSystem}.pre-commit-check.enabledPackages;
       };
 
       # Pre-commit checks
-      checks.${system}.pre-commit-check = pre-commit-hooks.lib.${system}.run {
+      checks.${darwinSystem}.pre-commit-check = pre-commit-hooks.lib.${darwinSystem}.run {
         src = ./.;
         hooks = {
           nixpkgs-fmt.enable = true;
