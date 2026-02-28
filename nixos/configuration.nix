@@ -44,6 +44,12 @@
     ];
   };
 
+  # Display manager
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
+
   # Wayland / Hyprland
   programs.hyprland = {
     enable = true;
