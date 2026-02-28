@@ -31,7 +31,7 @@
       };
 
       # NixOS configuration
-      nixosConfigurations.Syu-fu = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.ThinkpadX1Carbon = nixpkgs.lib.nixosSystem {
         system = nixosSystem;
         modules = [
           ./nixos/configuration.nix

@@ -12,7 +12,7 @@
 
   # Hostname
   networking = {
-    hostName = "Syu-fu";
+    hostName = "ThinkpadX1Carbon";
     networkmanager.enable = true;
   };
 
