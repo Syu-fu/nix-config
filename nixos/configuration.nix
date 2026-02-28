@@ -78,6 +78,19 @@
     shell = pkgs.zsh;
   };
 
+  # Fonts
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+    ];
+    fontconfig.defaultFonts = {
+      sansSerif = [ "Noto Sans CJK JP" ];
+      serif = [ "Noto Serif CJK JP" ];
+    };
+  };
+
   # Shells
   programs.zsh.enable = true;
 
