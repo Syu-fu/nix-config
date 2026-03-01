@@ -6,6 +6,7 @@
     stateVersion = "24.05";
 
     packages = with pkgs; [
+      ghq
       trashy
       hackgen-nf-font
     ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
