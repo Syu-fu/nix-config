@@ -67,6 +67,7 @@ _:
         "$mod, C, sendshortcut, CTRL, C,"
         "$mod, V, sendshortcut, CTRL, V,"
         "$mod SHIFT, E, exec, ~/.config/rofi/powermenu.sh"
+        "$mod, Escape, exec, hyprlock"
       ];
 
       bindm = [
