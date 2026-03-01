@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   programs.rofi = {
     enable = true;
@@ -6,7 +6,7 @@
     terminal = "${pkgs.wezterm}/bin/wezterm";
     theme =
       let
-        inherit (pkgs.lib) mkLiteral;
+        inherit (config.lib.formats.rasi) mkLiteral;
       in
       {
         "*" = {
