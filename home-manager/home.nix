@@ -29,6 +29,7 @@
     ./ripgrep.nix
     ./rofi.nix
     ./tmux.nix
+    ./vim.nix
     ./wezterm.nix
     ./zsh.nix
   ];
