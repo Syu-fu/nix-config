@@ -1,5 +1,25 @@
 { config, pkgs, ... }:
 {
+  xdg.configFile."rofi/powermenu.sh" = {
+    executable = true;
+    text = ''
+      #!/bin/sh
+      shutdown="󰐥 Shutdown"
+      reboot="󰜉 Reboot"
+      suspend="󰤄 Suspend"
+      logout="󰍃 Logout"
+
+      chosen=$(printf '%s\n' "$shutdown" "$reboot" "$suspend" "$logout" \
+        | rofi -dmenu -p "Power")
+
+      case "$chosen" in
+        "$shutdown") systemctl poweroff ;;
+        "$reboot")   systemctl reboot ;;
+        "$suspend")  systemctl suspend ;;
+        "$logout")   hyprctl dispatch exit ;;
+      esac
+    '';
+  };
   programs.rofi = {
     enable = true;
     package = pkgs.rofi;

@@ -66,6 +66,7 @@ _:
         "$mod SHIFT, 5, movetoworkspace, 5"
         "$mod, C, sendshortcut, CTRL, C,"
         "$mod, V, sendshortcut, CTRL, V,"
+        "$mod SHIFT, E, exec, ~/.config/rofi/powermenu.sh"
       ];
 
       bindm = [
