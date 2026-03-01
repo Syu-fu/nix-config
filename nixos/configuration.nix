@@ -66,7 +66,6 @@
     };
     xremap = {
       enable = true;
-      withWlroots = true;
       userName = "syu-fu";
       config = {
         keymap = [
