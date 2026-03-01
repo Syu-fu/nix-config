@@ -28,6 +28,7 @@
     ./gh.nix
     ./git.nix
     ./gtk.nix
+    ./hypridle.nix
     ./hyprland.nix
     ./hyprlock.nix
     ./lazygit.nix
