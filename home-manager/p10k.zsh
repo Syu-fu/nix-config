@@ -184,14 +184,14 @@
   if [[ "$OSTYPE" == "darwin"* ]]; then
     typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=#a89984
   elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    if [[ -f /etc/os-release ]]; then
-      if [[ "$ID" == "ubuntu" ]]; then
-        typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=#e95420
-      elif [[ "$ID" == "manjaro" ]]; then
-        typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=#34be5b
-      elif [[ "$ID" == "nixos" ]]; then
-        typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=#7ebae4
-      fi
+    local _os_id
+    [[ -f /etc/os-release ]] && _os_id=$(grep '^ID=' /etc/os-release | cut -d= -f2 | tr -d '"')
+    if [[ "$_os_id" == "ubuntu" ]]; then
+      typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=#e95420
+    elif [[ "$_os_id" == "manjaro" ]]; then
+      typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=#34be5b
+    elif [[ "$_os_id" == "nixos" ]]; then
+      typeset -g POWERLEVEL9K_OS_ICON_BACKGROUND=#7ebae4
     fi
   fi
   # Custom icon.
