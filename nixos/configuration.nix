@@ -68,7 +68,7 @@
       enable = true;
       userName = "syu-fu";
       config = {
-        keymap = [
+        modmap = [
           {
             name = "CapsLock to Ctrl (built-in keyboard only)";
             device.only = [ "AT Translated Set 2 keyboard" ];
