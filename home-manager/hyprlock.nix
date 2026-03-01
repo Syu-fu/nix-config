@@ -38,7 +38,7 @@ _:
         }
         {
           monitor = "";
-          text = "$DATE";
+          text = "cmd[update:60000] date +'%Y年%m月%d日 (%a)'";
           color = "rgba(a89984ff)";
           font_size = 20;
           font_family = "HackGenConsole NF";
