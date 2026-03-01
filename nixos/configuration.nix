@@ -87,13 +87,6 @@
               };
             };
           }
-          {
-            name = "Super+C/V for copy/paste";
-            remap = {
-              "super-c" = "ctrl-c";
-              "super-v" = "ctrl-v";
-            };
-          }
         ];
       };
     };
