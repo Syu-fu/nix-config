@@ -7,6 +7,14 @@ _:
 
       exec-once = [
         "waybar"
+        "fcitx5 --replace -d"
+      ];
+
+      env = [
+        "GTK_IM_MODULE,fcitx"
+        "QT_IM_MODULE,fcitx"
+        "XMODIFIERS,@im=fcitx"
+        "SDL_IM_MODULE,fcitx"
       ];
 
       general = {
