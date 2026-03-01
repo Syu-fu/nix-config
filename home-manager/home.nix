@@ -12,6 +12,8 @@
     ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
       gnugrep
       gnused
+    ] ++ pkgs.lib.optionals pkgs.stdenv.isLinux [
+      obsidian
     ];
   };
 
