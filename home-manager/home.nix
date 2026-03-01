@@ -29,6 +29,7 @@
     ./git.nix
     ./gtk.nix
     ./hyprland.nix
+    ./hyprlock.nix
     ./lazygit.nix
     ./lsd.nix
     ./ripgrep.nix

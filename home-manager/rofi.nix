@@ -8,8 +8,9 @@
       reboot="󰜉 Reboot"
       suspend="󰤄 Suspend"
       logout="󰍃 Logout"
+      lock="󰌾 Lock"
 
-      chosen=$(printf '%s\n' "$shutdown" "$reboot" "$suspend" "$logout" \
+      chosen=$(printf '%s\n' "$shutdown" "$reboot" "$suspend" "$logout" "$lock" \
         | rofi -dmenu -p "Power")
 
       case "$chosen" in
@@ -17,6 +18,7 @@
         "$reboot")   systemctl reboot ;;
         "$suspend")  systemctl suspend ;;
         "$logout")   hyprctl dispatch exit ;;
+        "$lock")     hyprlock ;;
       esac
     '';
   };
