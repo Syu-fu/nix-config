@@ -7,13 +7,17 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    xremap-flake = {
+      url = "github:xremap/nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, pre-commit-hooks, ... }:
+  outputs = { self, nixpkgs, home-manager, xremap-flake, pre-commit-hooks, ... }:
     let
       darwinSystem = "aarch64-darwin";
       nixosSystem = "x86_64-linux";
@@ -36,6 +40,7 @@
         modules = [
           ./nixos/configuration.nix
           home-manager.nixosModules.home-manager
+          xremap-flake.nixosModules.default
           {
             home-manager = {
               useGlobalPkgs = true;

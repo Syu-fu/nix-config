@@ -52,10 +52,44 @@
     ];
   };
 
-  # Display manager
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
+  # Display manager / Sound / xremap
+  services = {
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+    xremap = {
+      enable = true;
+      withWlroots = true;
+      userName = "syu-fu";
+      config = {
+        keymap = [
+          {
+            name = "CapsLock to Ctrl (built-in keyboard only)";
+            device.only = [ "AT Translated Set 2 keyboard" ];
+            remap = {
+              CapsLock = "Ctrl_L";
+            };
+          }
+          {
+            name = "SandS";
+            remap = {
+              Space = {
+                held = "Shift_L";
+                alone = "Space";
+                alone_timeout_millis = 200;
+              };
+            };
+          }
+        ];
+      };
+    };
   };
 
   # Wayland / Hyprland
@@ -70,19 +104,11 @@
     extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
   };
 
-  # Sound
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
   # User
   users.users.syu-fu = {
     isNormalUser = true;
     description = "Syu-fu";
-    extraGroups = [ "networkmanager" "wheel" "video" "audio" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "audio" "input" ];
     shell = pkgs.zsh;
   };
 
