@@ -23,6 +23,7 @@
     ./fzf.nix
     ./gh.nix
     ./git.nix
+    ./gtk.nix
     ./hyprland.nix
     ./lazygit.nix
     ./lsd.nix
