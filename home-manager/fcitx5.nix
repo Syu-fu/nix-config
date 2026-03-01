@@ -6,7 +6,7 @@ _:
     text = ''
       [Groups/0]
       Name=Default
-      Default Layout=jp
+      Default Layout=us
       DefaultIM=skk
 
       [Groups/0/Items/0]
