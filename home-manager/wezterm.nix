@@ -11,8 +11,36 @@
       config.font = wezterm.font("HackGenConsole NF")
       config.font_size = 14.0
 
-      -- Color scheme (Gruvbox material dark)
-      config.color_scheme = "gruvbox_material_dark_hard"
+      -- Color scheme (Gruvbox material dark hard)
+      config.colors = {
+        foreground = "#d4be98",
+        background = "#1d2021",
+        cursor_bg = "#d4be98",
+        cursor_fg = "#1d2021",
+        cursor_border = "#d4be98",
+        selection_fg = "#1d2021",
+        selection_bg = "#d4be98",
+        ansi = {
+          "#1d2021", -- black
+          "#ea6962", -- red
+          "#a9b665", -- green
+          "#d8a657", -- yellow
+          "#7daea3", -- blue
+          "#d3869b", -- magenta
+          "#89b482", -- cyan
+          "#d4be98", -- white
+        },
+        brights = {
+          "#3c3836", -- bright black
+          "#ea6962", -- bright red
+          "#a9b665", -- bright green
+          "#d8a657", -- bright yellow
+          "#7daea3", -- bright blue
+          "#d3869b", -- bright magenta
+          "#89b482", -- bright cyan
+          "#d4be98", -- bright white
+        },
+      }
 
       -- Window
       config.window_padding = {
