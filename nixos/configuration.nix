@@ -92,10 +92,18 @@
     };
   };
 
-  # Wayland / Hyprland
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
+  # Shells / Wayland / Hyprland / 1Password
+  programs = {
+    zsh.enable = true;
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
+    _1password.enable = true;
+    _1password-gui = {
+      enable = true;
+      polkitPolicyOwners = [ "syu-fu" ];
+    };
   };
 
   # XDG portal
@@ -125,9 +133,6 @@
       serif = [ "Noto Serif CJK JP" ];
     };
   };
-
-  # Shells
-  programs.zsh.enable = true;
 
   # System packages
   environment.systemPackages = with pkgs; [
