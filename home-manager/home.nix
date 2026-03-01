@@ -7,6 +7,7 @@
 
     packages = with pkgs; [
       trashy
+      hackgen-nf-font
     ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
       gnugrep
       gnused

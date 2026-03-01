@@ -84,6 +84,7 @@
     packages = with pkgs; [
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
+      hackgen-nf-font
     ];
     fontconfig.defaultFonts = {
       sansSerif = [ "Noto Sans CJK JP" ];
