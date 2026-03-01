@@ -6,7 +6,7 @@ _:
       "$mod" = "SUPER";
 
       exec-once = [
-        "waybar"
+        "hyprpanel"
         "fcitx5 --replace -d"
       ];
 
