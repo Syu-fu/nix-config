@@ -17,4 +17,13 @@ _:
       0=Default
     '';
   };
+
+  # fcitx5-skk: use semicolon as sticky key (one-shot shift = SKK conversion start)
+  xdg.configFile."fcitx5/conf/skk.conf" = {
+    force = true;
+    text = ''
+      [Behavior]
+      StickyKey=semicolon
+    '';
+  };
 }

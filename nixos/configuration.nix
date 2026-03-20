@@ -79,16 +79,6 @@
               CapsLock = "Ctrl_L";
             };
           }
-          {
-            name = "SandS";
-            remap = {
-              Space = {
-                held = "Shift_L";
-                alone = "Space";
-                alone_timeout_millis = 200;
-              };
-            };
-          }
         ];
       };
     };
