@@ -1,12 +1,23 @@
-_:
+{ pkgs, ... }:
 {
-  programs.vim = {
+  programs.neovim = {
     enable = true;
-    extraConfig = ''
-      " Cursor shape per mode
-      let &t_EI = "\e[2 q"
-      let &t_SI = "\e[5 q"
-      let &t_SR = "\e[4 q"
-    '';
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+
+    plugins = with pkgs.vimPlugins; [
+      nvim-lspconfig
+    ];
+
+    extraPackages = with pkgs; [
+      lua-language-server
+    ];
+  };
+
+  xdg.configFile = {
+    "nvim/init.lua".source = ./nvim/init.lua;
+    "nvim/lua/config/options.lua".source = ./nvim/lua/config/options.lua;
+    "nvim/lua/config/lsp.lua".source = ./nvim/lua/config/lsp.lua;
   };
 }
