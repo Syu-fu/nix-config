@@ -5,7 +5,10 @@ if not ok then
   return
 end
 
+local capabilities = require("blink.cmp").get_lsp_capabilities()
+
 local lua_ls_config = {
+  capabilities = capabilities,
   settings = {
     Lua = {
       runtime = {
