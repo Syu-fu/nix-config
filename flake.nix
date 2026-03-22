@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,11 +18,14 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, xremap-flake, pre-commit-hooks, ... }:
+  outputs = { self, nixpkgs, home-manager, xremap-flake, pre-commit-hooks, neovim-nightly-overlay, ... }:
     let
       darwinSystem = "aarch64-darwin";
       nixosSystem = "x86_64-linux";
-      darwinPkgs = nixpkgs.legacyPackages.${darwinSystem};
+      darwinPkgs = import nixpkgs {
+        system = darwinSystem;
+        overlays = [ neovim-nightly-overlay.overlays.default ];
+      };
     in
     {
       # macOS home-manager configuration
@@ -38,6 +42,7 @@
       nixosConfigurations.ThinkpadX1Carbon = nixpkgs.lib.nixosSystem {
         system = nixosSystem;
         modules = [
+          { nixpkgs.overlays = [ neovim-nightly-overlay.overlays.default ]; }
           ./nixos/configuration.nix
           home-manager.nixosModules.home-manager
           xremap-flake.nixosModules.default
