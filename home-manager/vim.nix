@@ -1,4 +1,7 @@
 { pkgs, ... }:
+let
+  gruvboxMaterial = pkgs.vimPlugins."gruvbox-material" or pkgs.vimPlugins."vim-gruvbox-material";
+in
 {
   programs.neovim = {
     enable = true;
@@ -8,6 +11,7 @@
 
     plugins = with pkgs.vimPlugins; [
       nvim-lspconfig
+      gruvboxMaterial
     ];
 
     extraPackages = with pkgs; [
@@ -17,6 +21,7 @@
 
   xdg.configFile = {
     "nvim/init.lua".source = ./nvim/init.lua;
+    "nvim/lua/config/colors.lua".source = ./nvim/lua/config/colors.lua;
     "nvim/lua/config/options.lua".source = ./nvim/lua/config/options.lua;
     "nvim/lua/config/lsp.lua".source = ./nvim/lua/config/lsp.lua;
   };
