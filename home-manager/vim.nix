@@ -47,6 +47,7 @@ in
       nixd
       ripgrep
       fd
+      tree-sitter
     ];
   };
 
