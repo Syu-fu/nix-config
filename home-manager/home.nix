@@ -9,6 +9,7 @@
       ghq
       trashy
       hackgen-nf-font
+      difftastic
     ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
       gnugrep
       gnused
