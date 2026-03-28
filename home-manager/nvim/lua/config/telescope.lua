@@ -20,4 +20,6 @@ end
 
 vim.keymap.set("n", ";b", builtin.buffers, { desc = "Telescope: buffers" })
 vim.keymap.set("n", ";p", project_files, { desc = "Telescope: project files" })
-vim.keymap.set("n", ";a", builtin.live_grep, { desc = "Telescope: live grep" })
+vim.keymap.set("n", ";/", builtin.live_grep, { desc = "Telescope: live grep" })
+vim.keymap.set("n", ";d", builtin.diagnostics, { desc = "Telescope: diagnostics" })
+vim.keymap.set("n", ";h", builtin.help_tags, { desc = "Telescope: help tags" })
