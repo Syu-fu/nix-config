@@ -10,7 +10,13 @@ lib.mkIf pkgs.stdenv.isLinux {
     nix_icon=$(printf '\xef\x8c\x93')
     tmp=$(mktemp)
     if ${pkgs.jq}/bin/jq --arg icon "$nix_icon" \
-      '.bar.launcher.icon = $icon | .bar.launcher.autoDetectIcon = false' \
+      '.bar.launcher.icon = $icon
+        | .bar.launcher.autoDetectIcon = false
+        | if .bar.layouts then
+            .bar.layouts |= with_entries(
+              .value.left = (["dashboard"] + (.value.left // [] | map(select(. != "dashboard"))))
+            )
+          else . end' \
       "$config_file" > "$tmp"; then
       mv "$tmp" "$config_file"
     else
