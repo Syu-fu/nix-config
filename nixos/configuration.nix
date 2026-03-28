@@ -54,6 +54,7 @@
 
   # Display manager / Sound / xremap
   services = {
+    upower.enable = true;
     greetd = {
       enable = true;
       settings.default_session = {
