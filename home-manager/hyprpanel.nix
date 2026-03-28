@@ -5,11 +5,16 @@ lib.mkIf pkgs.stdenv.isLinux {
     config_file="$config_dir/config.json"
     mkdir -p "$config_dir"
     if [ ! -f "$config_file" ]; then
-      echo '{}' > "$config_file"
+      printf '{}' > "$config_file"
     fi
-    tmp=$(${pkgs.jq}/bin/jq \
-      '.bar.launcher.icon = "" | .bar.launcher.autoDetectIcon = false' \
-      "$config_file")
-    echo "$tmp" > "$config_file"
+    nix_icon=$(printf '\xef\x8c\x93')
+    tmp=$(mktemp)
+    if ${pkgs.jq}/bin/jq --arg icon "$nix_icon" \
+      '.bar.launcher.icon = $icon | .bar.launcher.autoDetectIcon = false' \
+      "$config_file" > "$tmp"; then
+      mv "$tmp" "$config_file"
+    else
+      rm -f "$tmp"
+    fi
   '';
 }
