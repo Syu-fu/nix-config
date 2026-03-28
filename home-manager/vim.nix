@@ -15,6 +15,7 @@ in
       { plugin = blink-cmp; optional = true; }
       { plugin = plenary-nvim; optional = true; }
       { plugin = telescope-nvim; optional = true; }
+      { plugin = telescope-fzf-native-nvim; optional = true; }
     ];
 
     extraPackages = with pkgs; [
