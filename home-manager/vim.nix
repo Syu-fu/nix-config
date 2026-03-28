@@ -11,6 +11,7 @@ in
 
     plugins = with pkgs.vimPlugins; [
       { plugin = nvim-web-devicons; optional = true; }
+      { plugin = lazygit-nvim; optional = true; }
       { plugin = nvim-lspconfig; optional = true; }
       { plugin = gruvboxMaterial; optional = true; }
       { plugin = blink-cmp; optional = true; }
@@ -49,6 +50,7 @@ in
       ripgrep
       fd
       tree-sitter
+      lazygit
     ];
   };
 
@@ -68,5 +70,6 @@ in
     "nvim/lua/config/bqf.lua".source = ./nvim/lua/config/bqf.lua;
     "nvim/lua/config/treesitter.lua".source = ./nvim/lua/config/treesitter.lua;
     "nvim/lua/config/autopairs.lua".source = ./nvim/lua/config/autopairs.lua;
+    "nvim/lua/config/lazygit.lua".source = ./nvim/lua/config/lazygit.lua;
   };
 }
