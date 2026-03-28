@@ -22,6 +22,23 @@ in
       { plugin = oil-nvim; optional = true; }
       { plugin = quicker-nvim; optional = true; }
       { plugin = nvim-bqf; optional = true; }
+      {
+        plugin = pkgs.vimPlugins.nvim-treesitter.withPlugins (p: with p; [
+          bash
+          json
+          lua
+          markdown
+          markdown_inline
+          nix
+          query
+          regex
+          toml
+          vim
+          vimdoc
+          yaml
+        ]);
+        optional = true;
+      }
     ];
 
     extraPackages = with pkgs; [
@@ -46,5 +63,6 @@ in
     "nvim/lua/config/oil.lua".source = ./nvim/lua/config/oil.lua;
     "nvim/lua/config/quicker.lua".source = ./nvim/lua/config/quicker.lua;
     "nvim/lua/config/bqf.lua".source = ./nvim/lua/config/bqf.lua;
+    "nvim/lua/config/treesitter.lua".source = ./nvim/lua/config/treesitter.lua;
   };
 }
