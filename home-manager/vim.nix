@@ -21,6 +21,7 @@ in
 
     extraPackages = with pkgs; [
       lua-language-server
+      nixd
       ripgrep
       fd
     ];

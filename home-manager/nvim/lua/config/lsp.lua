@@ -7,28 +7,37 @@ end
 
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-local lua_ls_config = {
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      runtime = {
-        version = "LuaJIT",
-      },
-      workspace = {
-        checkThirdParty = false,
-        library = { vim.env.VIMRUNTIME },
-      },
-      telemetry = {
-        enable = false,
+local servers = {
+  lua_ls = {
+    capabilities = capabilities,
+    settings = {
+      Lua = {
+        runtime = {
+          version = "LuaJIT",
+        },
+        workspace = {
+          checkThirdParty = false,
+          library = { vim.env.VIMRUNTIME },
+        },
+        telemetry = {
+          enable = false,
+        },
       },
     },
+  },
+  nixd = {
+    capabilities = capabilities,
   },
 }
 
 if vim.lsp.config ~= nil and vim.lsp.enable ~= nil then
-  vim.lsp.config("lua_ls", lua_ls_config)
-  vim.lsp.enable("lua_ls")
+  for server, config in pairs(servers) do
+    vim.lsp.config(server, config)
+  end
+  vim.lsp.enable(vim.tbl_keys(servers))
   return
 end
 
-lspconfig.lua_ls.setup(lua_ls_config)
+for server, config in pairs(servers) do
+  lspconfig[server].setup(config)
+end
