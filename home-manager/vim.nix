@@ -21,6 +21,7 @@ in
       { plugin = gitsigns-nvim; optional = true; }
       { plugin = oil-nvim; optional = true; }
       { plugin = quicker-nvim; optional = true; }
+      { plugin = nvim-bqf; optional = true; }
     ];
 
     extraPackages = with pkgs; [
@@ -44,5 +45,6 @@ in
     "nvim/lua/config/gitsigns.lua".source = ./nvim/lua/config/gitsigns.lua;
     "nvim/lua/config/oil.lua".source = ./nvim/lua/config/oil.lua;
     "nvim/lua/config/quicker.lua".source = ./nvim/lua/config/quicker.lua;
+    "nvim/lua/config/bqf.lua".source = ./nvim/lua/config/bqf.lua;
   };
 }
