@@ -5,7 +5,9 @@ lib.mkIf pkgs.stdenv.isLinux {
     package = pkgs.hyprpanel;
     settings = {
       scalingPriority = "hyprland";
+      theme.bar.scaling = 80;
       bar = {
+        clock.format = "%-m月%-d日(%a) %H:%M";
         launcher = {
           icon = "";
           autoDetectIcon = false;
