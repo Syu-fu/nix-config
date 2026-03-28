@@ -1,4 +1,5 @@
 require("config.plugins")
+require("config.notify")
 require("config.colors")
 require("config.options")
 require("config.completion")
