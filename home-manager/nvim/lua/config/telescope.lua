@@ -1,0 +1,23 @@
+local builtin = require("telescope.builtin")
+
+require("telescope").setup({
+  defaults = {
+    mappings = {
+      i = {
+        ["<C-u>"] = false,
+        ["<C-d>"] = false,
+      },
+    },
+  },
+})
+
+local function project_files()
+  local ok = pcall(builtin.git_files, { show_untracked = true })
+  if not ok then
+    builtin.find_files()
+  end
+end
+
+vim.keymap.set("n", ";b", builtin.buffers, { desc = "Telescope: buffers" })
+vim.keymap.set("n", ";p", project_files, { desc = "Telescope: project files" })
+vim.keymap.set("n", ";a", builtin.live_grep, { desc = "Telescope: live grep" })

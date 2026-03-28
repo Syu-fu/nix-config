@@ -1,3 +1,5 @@
 vim.cmd.packadd("nvim-lspconfig")
 vim.cmd.packadd("gruvbox-material")
 vim.cmd.packadd("blink.cmp")
+vim.cmd.packadd("plenary.nvim")
+vim.cmd.packadd("telescope.nvim")

@@ -13,10 +13,14 @@ in
       { plugin = nvim-lspconfig; optional = true; }
       { plugin = gruvboxMaterial; optional = true; }
       { plugin = blink-cmp; optional = true; }
+      { plugin = plenary-nvim; optional = true; }
+      { plugin = telescope-nvim; optional = true; }
     ];
 
     extraPackages = with pkgs; [
       lua-language-server
+      ripgrep
+      fd
     ];
   };
 
@@ -27,5 +31,6 @@ in
     "nvim/lua/config/colors.lua".source = ./nvim/lua/config/colors.lua;
     "nvim/lua/config/options.lua".source = ./nvim/lua/config/options.lua;
     "nvim/lua/config/lsp.lua".source = ./nvim/lua/config/lsp.lua;
+    "nvim/lua/config/telescope.lua".source = ./nvim/lua/config/telescope.lua;
   };
 }
