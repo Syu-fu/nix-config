@@ -6,7 +6,6 @@ _:
       "$mod" = "SUPER";
 
       exec-once = [
-        "hyprpanel"
         "fcitx5 --replace -d"
       ];
 

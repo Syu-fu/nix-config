@@ -14,7 +14,6 @@
       gnugrep
       gnused
     ] ++ pkgs.lib.optionals pkgs.stdenv.isLinux [
-      hyprpanel
       obsidian
     ];
   };
