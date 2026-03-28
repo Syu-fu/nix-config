@@ -16,6 +16,7 @@ in
       { plugin = plenary-nvim; optional = true; }
       { plugin = telescope-nvim; optional = true; }
       { plugin = telescope-fzf-native-nvim; optional = true; }
+      { plugin = lualine-nvim; optional = true; }
     ];
 
     extraPackages = with pkgs; [
@@ -33,5 +34,6 @@ in
     "nvim/lua/config/options.lua".source = ./nvim/lua/config/options.lua;
     "nvim/lua/config/lsp.lua".source = ./nvim/lua/config/lsp.lua;
     "nvim/lua/config/telescope.lua".source = ./nvim/lua/config/telescope.lua;
+    "nvim/lua/config/lualine.lua".source = ./nvim/lua/config/lualine.lua;
   };
 }
