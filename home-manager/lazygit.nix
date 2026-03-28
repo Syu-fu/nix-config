@@ -7,11 +7,12 @@
         autoFetch = false;
         disableForcePushing = true;
         parseEmoji = true;
-        paging = {
-          colorArg = "always";
-          pager = "delta --paging=never";
-          externalDiffCommand = "difft --color=always --display=inline --syntax-highlight=on";
-        };
+        pagers = [
+          {
+            colorArg = "always";
+            externalDiffCommand = "difft --color=always --display=inline --syntax-highlight=on";
+          }
+        ];
         log = {
           showGraph = "always";
         };
