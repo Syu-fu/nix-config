@@ -10,6 +10,7 @@ in
     vimAlias = true;
 
     plugins = with pkgs.vimPlugins; [
+      { plugin = nvim-web-devicons; optional = true; }
       { plugin = nvim-lspconfig; optional = true; }
       { plugin = gruvboxMaterial; optional = true; }
       { plugin = blink-cmp; optional = true; }

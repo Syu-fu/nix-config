@@ -1,3 +1,4 @@
+vim.cmd.packadd("nvim-web-devicons")
 vim.cmd.packadd("nvim-lspconfig")
 vim.cmd.packadd("gruvbox-material")
 vim.cmd.packadd("blink.cmp")
