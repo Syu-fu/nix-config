@@ -31,6 +31,7 @@
     ./hypridle.nix
     ./hyprland.nix
     ./hyprlock.nix
+    ./hyprpanel.nix
     ./lazygit.nix
     ./lsd.nix
     ./ripgrep.nix
