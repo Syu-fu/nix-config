@@ -16,6 +16,7 @@ in
     mouse = true;
     aggressiveResize = true;
     extraConfig = ''
+      set-option -g focus-events on
       set-option -g default-shell $SHELL
       set-option -g default-command ""
       set-option -g set-clipboard on
