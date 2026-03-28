@@ -1,4 +1,5 @@
-require("gitsigns").setup({
+---@type Gitsigns.Config
+local opts = {
   signs = {
     add          = { text = "▎" },
     change       = { text = "▎" },
@@ -7,4 +8,6 @@ require("gitsigns").setup({
     changedelete = { text = "▎" },
     untracked    = { text = "▎" },
   },
-})
+}
+
+require("gitsigns").setup(opts)

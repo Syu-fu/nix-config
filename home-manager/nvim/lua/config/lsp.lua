@@ -5,8 +5,10 @@ if not ok then
   return
 end
 
+---@type lsp.ClientCapabilities
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 
+---@type table<string, vim.lsp.ClientConfig>
 local servers = {
   lua_ls = {
     capabilities = capabilities,

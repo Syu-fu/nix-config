@@ -1,4 +1,5 @@
-require("oil").setup({
+---@type oil.SetupOpts
+local opts = {
   default_file_explorer = true,
   delete_to_trash = true,
   view_options = {
@@ -9,4 +10,6 @@ require("oil").setup({
     max_width = 80,
     max_height = 30,
   },
-})
+}
+
+require("oil").setup(opts)

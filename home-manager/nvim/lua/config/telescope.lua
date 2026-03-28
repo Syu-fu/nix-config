@@ -21,6 +21,7 @@ require("telescope").setup({
 
 require("telescope").load_extension("fzf")
 
+---@return nil
 local function project_files()
   local ok = pcall(builtin.git_files, { show_untracked = true })
   if not ok then

@@ -1,6 +1,7 @@
 local notify = require("notify")
 
-notify.setup({
+---@type notify.Config
+local opts = {
   background_colour = "#1d2021",
   stages = "fade_in_slide_out",
   timeout = 3000,
@@ -12,6 +13,8 @@ notify.setup({
     DEBUG = "",
     TRACE = "✎",
   },
-})
+}
+
+notify.setup(opts)
 
 vim.notify = notify

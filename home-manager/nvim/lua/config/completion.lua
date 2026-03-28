@@ -1,4 +1,5 @@
-require("blink.cmp").setup({
+---@type blink.cmp.Config
+local opts = {
   keymap = { preset = "default" },
 
   appearance = {
@@ -17,4 +18,6 @@ require("blink.cmp").setup({
   },
 
   fuzzy = { implementation = "prefer_rust" },
-})
+}
+
+require("blink.cmp").setup(opts)
