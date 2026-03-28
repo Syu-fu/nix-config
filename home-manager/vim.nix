@@ -19,6 +19,7 @@ in
       { plugin = lualine-nvim; optional = true; }
       { plugin = nvim-notify; optional = true; }
       { plugin = gitsigns-nvim; optional = true; }
+      { plugin = oil-nvim; optional = true; }
     ];
 
     extraPackages = with pkgs; [
@@ -40,5 +41,6 @@ in
     "nvim/lua/config/lualine.lua".source = ./nvim/lua/config/lualine.lua;
     "nvim/lua/config/notify.lua".source = ./nvim/lua/config/notify.lua;
     "nvim/lua/config/gitsigns.lua".source = ./nvim/lua/config/gitsigns.lua;
+    "nvim/lua/config/oil.lua".source = ./nvim/lua/config/oil.lua;
   };
 }
