@@ -15,6 +15,14 @@ in
     dotDir = ".config/zsh";
     defaultKeymap = "emacs";
     enableCompletion = true;
+    completionInit = ''
+      autoload -Uz compinit
+      if [[ -f "$ZDOTDIR/.zcompdump" ]] && [[ $(date +'%j') == $(date -r "$ZDOTDIR/.zcompdump" +'%j') ]]; then
+        compinit -C -d "$ZDOTDIR/.zcompdump"
+      else
+        compinit -d "$ZDOTDIR/.zcompdump"
+      fi
+    '';
     initExtraBeforeCompInit = ''
       fpath+=(${pkgs.zsh-completions}/share/zsh/site-functions)
     '';
