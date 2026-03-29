@@ -18,12 +18,41 @@ _:
     '';
   };
 
-  # fcitx5-skk: use semicolon as sticky key (one-shot shift = SKK conversion start)
+  # fcitx5-skk: use StickyShift rule for semicolon conversion start
   xdg.configFile."fcitx5/conf/skk.conf" = {
     force = true;
     text = ''
-      [Behavior]
-      StickyKey=semicolon
+      Rule=StickyShift
     '';
+  };
+
+  # libskk StickyShift rule: map semicolon to start SKK conversion
+  xdg.configFile."libskk/rules/StickyShift/metadata.json" = {
+    text = builtins.toJSON {
+      name = "StickyShift";
+      description = "Use semicolon as sticky shift";
+    };
+  };
+
+  xdg.configFile."libskk/rules/StickyShift/keymap/hiragana.json" = {
+    text = builtins.toJSON {
+      include = [ "default/hiragana" ];
+      define = {
+        keymap = {
+          ";" = "start-preedit-no-delete";
+        };
+      };
+    };
+  };
+
+  xdg.configFile."libskk/rules/StickyShift/keymap/katakana.json" = {
+    text = builtins.toJSON {
+      include = [ "default/katakana" ];
+      define = {
+        keymap = {
+          ";" = "start-preedit-no-delete";
+        };
+      };
+    };
   };
 }
