@@ -96,7 +96,7 @@ in
   xdg.configFile."tmux/scripts/ghq-tmux-switch.sh" = {
     executable = true;
     text = ''
-      #!/bin/bash
+      #!/usr/bin/env bash
 
       # Set color variables
       green=$(tput setaf 2)
