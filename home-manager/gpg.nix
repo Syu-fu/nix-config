@@ -1,10 +1,5 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    gnupg
-    pinentry-qt
-  ];
-
   services.gpg-agent = {
     enable = true;
     pinentryPackage = pkgs.pinentry-qt;

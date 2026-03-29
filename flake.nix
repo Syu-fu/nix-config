@@ -50,6 +50,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              backupFileExtension = "backup";
               users.syu-fu = import ./home-manager/home.nix;
             };
           }
