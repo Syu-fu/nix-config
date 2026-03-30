@@ -106,7 +106,7 @@ in
       }
 
       # Run ls after cd
-      function chpwd() { ls }
+      function chpwd() { lsd }
 
       # Auto-start tmux
       if [ -z "$TMUX" ]; then
