@@ -10,6 +10,7 @@
       trashy
       hackgen-nf-font
       difftastic
+      claude-code
     ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin [
       gnugrep
       gnused
