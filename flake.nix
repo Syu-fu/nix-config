@@ -12,13 +12,14 @@
       url = "github:xremap/nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    skk-time-server.url = "github:Syu-fu/skk-time-server";
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, xremap-flake, pre-commit-hooks, neovim-nightly-overlay, ... }:
+  outputs = { self, nixpkgs, home-manager, xremap-flake, skk-time-server, pre-commit-hooks, neovim-nightly-overlay, ... }:
     let
       darwinSystem = "aarch64-darwin";
       nixosSystem = "x86_64-linux";
@@ -46,6 +47,7 @@
           ./nixos/configuration.nix
           home-manager.nixosModules.home-manager
           xremap-flake.nixosModules.default
+          skk-time-server.nixosModules.default
           {
             home-manager = {
               useGlobalPkgs = true;

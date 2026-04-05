@@ -68,6 +68,13 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
+    skk-time-server = {
+      enable = true;
+      conversions = {
+        "now" = "%H:%M";
+        "dnow" = "%Y-%m-%d %H:%M";
+      };
+    };
     xremap = {
       enable = true;
       userName = "syu-fu";
@@ -84,6 +91,9 @@
       };
     };
   };
+
+  # Workaround: skk-time-server requires $HOME for XDG base directories
+  systemd.services.skk-time-server.environment.HOME = "/tmp/skk-time-server";
 
   # Shells / Wayland / Hyprland / 1Password
   programs = {
