@@ -70,10 +70,7 @@
     };
     skk-time-server = {
       enable = true;
-      conversions = {
-        "now" = "%H:%M";
-        "dnow" = "%Y-%m-%d %H:%M";
-      };
+      conversions = import ../skk-time-server-conversions.nix;
     };
     xremap = {
       enable = true;

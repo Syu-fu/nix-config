@@ -1,4 +1,11 @@
 { pkgs, ... }:
+let
+  skkTimeServerConversions = import ../skk-time-server-conversions.nix;
+  # Generate sed expression to delete dynamic entries from user.dict
+  cleanupSedExpr = builtins.concatStringsSep "" (
+    map (key: "/^${key} /d;") (builtins.attrNames skkTimeServerConversions)
+  );
+in
 {
   # fcitx5 profile: SKK only (no input method switching)
   xdg.configFile."fcitx5/profile" = {
@@ -51,6 +58,24 @@
     type=server,host=127.0.0.1,port=1178,encoding=EUC-JP
     type=file,file=${pkgs.skkDictionaries.l}/share/skk/SKK-JISYO.L,mode=readonly
   '';
+
+  # Periodically remove dynamic entries (skk-time-server) from user.dict
+  systemd.user.services.skk-user-dict-cleanup = {
+    Unit.Description = "Remove skk-time-server entries from SKK user dictionary";
+    Service = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.gnused}/bin/sed -i '${cleanupSedExpr}' %h/.local/share/fcitx5/skk/user.dict";
+    };
+  };
+
+  systemd.user.timers.skk-user-dict-cleanup = {
+    Unit.Description = "Periodically clean SKK user dictionary";
+    Timer = {
+      OnCalendar = "*:0/5";
+      Persistent = true;
+    };
+    Install.WantedBy = [ "timers.target" ];
+  };
 
   xdg.configFile."libskk/rules/StickyShift/keymap/katakana.json" = {
     text = builtins.toJSON {
