@@ -2,7 +2,13 @@
 {
   programs.firefox = {
     enable = true;
-    profiles.default = { };
+    profiles.default = {
+      settings = {
+        "sidebar.vertically_optimized" = true;
+        "sidebar.visibility" = "expand-on-hover";
+        "signon.rememberSignons" = false;
+      };
+    };
     policies = {
       ExtensionSettings = {
         "{d7742d87-e61d-4b78-b8a1-b469842139fa}" = {
