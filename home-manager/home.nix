@@ -19,6 +19,17 @@
     ];
   };
 
+  home.file.".claude/settings.json".text = builtins.toJSON {
+    permissions = {
+      defaultMode = "default";
+    };
+    attribution = {
+      commit = "";
+      pr = "";
+    };
+    language = "日本語";
+  };
+
   programs.home-manager.enable = true;
 
   imports = [
