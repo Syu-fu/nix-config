@@ -41,8 +41,8 @@
 
       # NixOS configuration
       nixosConfigurations.ThinkpadX1Carbon = nixpkgs.lib.nixosSystem {
-        system = nixosSystem;
         modules = [
+          { nixpkgs.hostPlatform = nixosSystem; }
           { nixpkgs.overlays = [ neovim-nightly-overlay.overlays.default ]; }
           ./nixos/configuration.nix
           home-manager.nixosModules.home-manager

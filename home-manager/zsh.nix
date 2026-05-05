@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 let
   mkDeferredPlugin = name: pkg: file: {
     inherit name;
@@ -12,7 +12,7 @@ in
 {
   programs.zsh = {
     enable = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     defaultKeymap = "emacs";
     enableCompletion = true;
     completionInit = ''
@@ -22,9 +22,6 @@ in
       else
         compinit -d "$ZDOTDIR/.zcompdump"
       fi
-    '';
-    initExtraBeforeCompInit = ''
-      fpath+=(${pkgs.zsh-completions}/share/zsh/site-functions)
     '';
     plugins = [
       {
@@ -72,7 +69,11 @@ in
         "xdg-open"
       ];
     };
-    initContent = ''
+    initContent = lib.mkMerge [
+      (lib.mkOrder 550 ''
+        fpath+=(${pkgs.zsh-completions}/share/zsh/site-functions)
+      '')
+      ''
       setopt HIST_REDUCE_BLANKS
       setopt HIST_NO_STORE
 
@@ -115,7 +116,8 @@ in
       if [ -z "$TMUX" ]; then
         tmux new-session -A -s main
       fi
-    '';
+    ''
+    ];
   };
 
   xdg.configFile."zsh/p10k.zsh".source = ./p10k.zsh;
