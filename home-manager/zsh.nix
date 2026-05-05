@@ -81,6 +81,9 @@ in
       _zshaddhistory() { [[ $? -eq 0 ]] }
       add-zsh-hook zshaddhistory _zshaddhistory
 
+      # Accept zsh-autosuggestions with Ctrl-m
+      bindkey '^M' autosuggest-accept
+
       # Load p10k theme config
       [[ -f ~/.config/zsh/p10k.zsh ]] && source ~/.config/zsh/p10k.zsh
 
