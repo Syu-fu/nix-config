@@ -64,7 +64,9 @@
       config.macos_forward_to_ime_modifier_mask = "SHIFT|CTRL"
 
       -- macOS: remap Cmd key to Meta for tmux bindings
+      -- Ctrl-m sends CSI u sequence to differentiate from Enter
       config.keys = {
+        { key = "m", mods = "CTRL", action = wezterm.action.SendString("\x1b[109;5u") },
         { key = "H", mods = "CMD", action = wezterm.action.SendKey { key = "H", mods = "META" } },
         { key = "J", mods = "CMD", action = wezterm.action.SendKey { key = "J", mods = "META" } },
         { key = "K", mods = "CMD", action = wezterm.action.SendKey { key = "K", mods = "META" } },
